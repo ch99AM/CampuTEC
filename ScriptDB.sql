@@ -117,3 +117,21 @@ CREATE TABLE RetoxActividad(
    FOREIGN KEY (IdReto) REFERENCES Reto(IdReto),
    FOREIGN KEY (IdActividad) REFERENCES Actividad(IdActividad)
 );
+
+INSERT INTO Perfil(Nombre, Apellido, Usuario, Pin, Rol, Activo) 
+VALUES ('Christian', 'Alpizar', '2017146794', '1234', 'E', 1),
+		('Jose', 'Monge', '2017146795', '1234', 'E', 1),
+		('Andrey', 'Sibaja', '2017146796', '1234', 'P', 1),
+		('Edgar', 'Chaves', '2017146797', '1234', 'E', 1);
+
+INSERT INTO Estudiante(IdPerfil, Universidad, Sede,TecColones) 
+VALUES ((SELECT IdPerfil from Perfil 
+			Where Nombre = 'Christian'), 'TEC', 'Central', 20),
+		((SELECT IdPerfil from Perfil 
+			Where Nombre = 'Jose'), 'TEC', 'Central', 20),
+		((SELECT IdPerfil from Perfil 
+			Where Nombre = 'Edgar'), 'TEC', 'Central', 20);
+
+INSERT INTO Profesor(IdPerfil, Email1, Celular) 
+VALUES ((SELECT IdPerfil from Perfil 
+			Where Nombre = 'Andrey'), 'example@gmail.com', '50688888888');

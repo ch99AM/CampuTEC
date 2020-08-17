@@ -1,0 +1,26 @@
+package id.Campus;
+
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
+
+import org.apache.commons.codec.binary.Base64;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) throws UnsupportedEncodingException, URISyntaxException
+    {
+        Connection c = new Connection();
+       
+        
+        c.get("/Login", "");
+        
+       // c.post("/usuario", "{\"usuario\"\": \"Andrey\"}");
+    }
+}

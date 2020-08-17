@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using System.Data.SqlClient;
-using System.Text;
+﻿using MySql.Data.MySqlClient;
 
 namespace CampusTECAPI1.DBConnection
 {
     public class singletonConnection
     {
-        public static string CONNECTIONSTRING = @"Data Source=CHRISTIAN\SQLEXPRESS;Initial Catalog=DBCampusTEC;Integrated Security=True";
-        
-        private static SqlConnection conn = null;
+        public static string CONNECTIONSTRING = "server = localhost; database=DBCampusTEC; Uid=root; pwd=12345678";
 
-        public static SqlConnection getConnection()
+       
+
+        private static MySqlConnection conn = null;
+
+        public static MySqlConnection getConnection()
         {
             if(true)
             {
-                conn  = new SqlConnection(CONNECTIONSTRING);
+                conn = new MySqlConnection(CONNECTIONSTRING);
+                
             }
             return conn;
         }
