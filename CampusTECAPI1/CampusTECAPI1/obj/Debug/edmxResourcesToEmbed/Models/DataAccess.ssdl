@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBCampusTECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="IdActividad" />
+    </Key>
+    <Property Name="IdActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCurso" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArchivoAdjunto" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="Fecha" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProfesor" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="TecColones" Type="int" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="IdEstudiante" />
+    </Key>
+    <Property Name="IdEstudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPerfil" Type="int" Nullable="false" />
+    <Property Name="Universidad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sede" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email1" Type="varchar" MaxLength="30" />
+    <Property Name="Email2" Type="varchar" MaxLength="30" />
+    <Property Name="Celular" Type="varchar" MaxLength="11" />
+    <Property Name="Foto" Type="varchar" MaxLength="100" />
+    <Property Name="TecColones" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstudiantexActividad">
+    <Key>
+      <PropertyRef Name="IdExA" />
+    </Key>
+    <Property Name="IdExA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEstudiante" Type="int" Nullable="false" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+    <Property Name="Completada" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstudiantexCurso">
+    <Key>
+      <PropertyRef Name="IdExC" />
+    </Key>
+    <Property Name="IdExC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEstudiante" Type="int" Nullable="false" />
+    <Property Name="IdCurso" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Objetivo">
+    <Key>
+      <PropertyRef Name="IdObjetivo" />
+    </Key>
+    <Property Name="IdObjetivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCurso" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Perfil">
+    <Key>
+      <PropertyRef Name="IdPerfil" />
+    </Key>
+    <Property Name="IdPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Apellido" Type="varchar" MaxLength="30" />
+    <Property Name="Usuario" Type="varchar" MaxLength="10" />
+    <Property Name="Pin" Type="varchar" MaxLength="8" />
+    <Property Name="Rol" Type="char" MaxLength="1" />
+    <Property Name="Activo" Type="int" />
+  </EntityType>
+  <EntityType Name="Profesor">
+    <Key>
+      <PropertyRef Name="IdProfesor" />
+    </Key>
+    <Property Name="IdProfesor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPerfil" Type="int" Nullable="false" />
+    <Property Name="Email1" Type="varchar" MaxLength="30" />
+    <Property Name="Email2" Type="varchar" MaxLength="30" />
+    <Property Name="Celular" Type="varchar" MaxLength="11" />
+    <Property Name="Foto" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Reto">
+    <Key>
+      <PropertyRef Name="IdReto" />
+    </Key>
+    <Property Name="IdReto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCurso" Type="int" Nullable="false" />
+    <Property Name="NombreReto" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="FechaLimte" Type="datetime" />
+    <Property Name="TecColones" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RetoxActividad">
+    <Key>
+      <PropertyRef Name="IdRxA" />
+    </Key>
+    <Property Name="IdRxA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdReto" Type="int" Nullable="false" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RetoxObjetivo">
+    <Key>
+      <PropertyRef Name="IdRxO" />
+    </Key>
+    <Property Name="IdRxO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdReto" Type="int" Nullable="false" />
+    <Property Name="IdObjetivo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tarea">
+    <Key>
+      <PropertyRef Name="IdTarea" />
+    </Key>
+    <Property Name="IdTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEstudiante" Type="int" Nullable="false" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Semana" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="HoraInicio" Type="time" Precision="7" />
+    <Property Name="HoraFinal" Type="time" Precision="7" />
+  </EntityType>
+  <Association Name="FK__Actividad__IdCur__123EB7A3">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Curso__IdProfeso__09A971A2">
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+    <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesor">
+        <PropertyRef Name="IdProfesor" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="IdProfesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdAct__32AB8735">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="EstudiantexActividad" Type="Self.EstudiantexActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="EstudiantexActividad">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdCur__2EDAF651">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="EstudiantexCurso" Type="Self.EstudiantexCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="EstudiantexCurso">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdEst__2DE6D218">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="EstudiantexCurso" Type="Self.EstudiantexCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="EstudiantexCurso">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdEst__31B762FC">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="EstudiantexActividad" Type="Self.EstudiantexActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="EstudiantexActividad">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdPer__0F624AF8">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Estudiante">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Objetivo__IdCurs__0C85DE4D">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Objetivo">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Profesor__IdPerf__06CD04F7">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Profesor">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reto__IdCurso__1EA48E88">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Reto" Type="Self.Reto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Reto">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxActi__IdAct__3587F3E0">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="RetoxActividad" Type="Self.RetoxActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="RetoxActividad">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxActi__IdRet__367C1819">
+    <End Role="Reto" Type="Self.Reto" Multiplicity="1" />
+    <End Role="RetoxActividad" Type="Self.RetoxActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reto">
+        <PropertyRef Name="IdReto" />
+      </Principal>
+      <Dependent Role="RetoxActividad">
+        <PropertyRef Name="IdReto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxObje__IdObj__2B0A656D">
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="1" />
+    <End Role="RetoxObjetivo" Type="Self.RetoxObjetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Objetivo">
+        <PropertyRef Name="IdObjetivo" />
+      </Principal>
+      <Dependent Role="RetoxObjetivo">
+        <PropertyRef Name="IdObjetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxObje__IdRet__2A164134">
+    <End Role="Reto" Type="Self.Reto" Multiplicity="1" />
+    <End Role="RetoxObjetivo" Type="Self.RetoxObjetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reto">
+        <PropertyRef Name="IdReto" />
+      </Principal>
+      <Dependent Role="RetoxObjetivo">
+        <PropertyRef Name="IdReto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarea__IdActivid__160F4887">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarea__IdEstudia__151B244E">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBCampusTECModelStoreContainer">
+    <EntitySet Name="Actividad" EntityType="Self.Actividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstudiantexActividad" EntityType="Self.EstudiantexActividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstudiantexCurso" EntityType="Self.EstudiantexCurso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Objetivo" EntityType="Self.Objetivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reto" EntityType="Self.Reto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RetoxActividad" EntityType="Self.RetoxActividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RetoxObjetivo" EntityType="Self.RetoxObjetivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarea" EntityType="Self.Tarea" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Actividad__IdCur__123EB7A3" Association="Self.FK__Actividad__IdCur__123EB7A3">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Curso__IdProfeso__09A971A2" Association="Self.FK__Curso__IdProfeso__09A971A2">
+      <End Role="Profesor" EntitySet="Profesor" />
+      <End Role="Curso" EntitySet="Curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdAct__32AB8735" Association="Self.FK__Estudiant__IdAct__32AB8735">
+      <End Role="Actividad" EntitySet="Actividad" />
+      <End Role="EstudiantexActividad" EntitySet="EstudiantexActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdCur__2EDAF651" Association="Self.FK__Estudiant__IdCur__2EDAF651">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="EstudiantexCurso" EntitySet="EstudiantexCurso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdEst__2DE6D218" Association="Self.FK__Estudiant__IdEst__2DE6D218">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="EstudiantexCurso" EntitySet="EstudiantexCurso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdEst__31B762FC" Association="Self.FK__Estudiant__IdEst__31B762FC">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="EstudiantexActividad" EntitySet="EstudiantexActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdPer__0F624AF8" Association="Self.FK__Estudiant__IdPer__0F624AF8">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="Estudiante" EntitySet="Estudiante" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Objetivo__IdCurs__0C85DE4D" Association="Self.FK__Objetivo__IdCurs__0C85DE4D">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Objetivo" EntitySet="Objetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Profesor__IdPerf__06CD04F7" Association="Self.FK__Profesor__IdPerf__06CD04F7">
+      <End Role="Perfil" EntitySet="Perfil" />
+      <End Role="Profesor" EntitySet="Profesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reto__IdCurso__1EA48E88" Association="Self.FK__Reto__IdCurso__1EA48E88">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Reto" EntitySet="Reto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxActi__IdAct__3587F3E0" Association="Self.FK__RetoxActi__IdAct__3587F3E0">
+      <End Role="Actividad" EntitySet="Actividad" />
+      <End Role="RetoxActividad" EntitySet="RetoxActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxActi__IdRet__367C1819" Association="Self.FK__RetoxActi__IdRet__367C1819">
+      <End Role="Reto" EntitySet="Reto" />
+      <End Role="RetoxActividad" EntitySet="RetoxActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxObje__IdObj__2B0A656D" Association="Self.FK__RetoxObje__IdObj__2B0A656D">
+      <End Role="Objetivo" EntitySet="Objetivo" />
+      <End Role="RetoxObjetivo" EntitySet="RetoxObjetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxObje__IdRet__2A164134" Association="Self.FK__RetoxObje__IdRet__2A164134">
+      <End Role="Reto" EntitySet="Reto" />
+      <End Role="RetoxObjetivo" EntitySet="RetoxObjetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarea__IdActivid__160F4887" Association="Self.FK__Tarea__IdActivid__160F4887">
+      <End Role="Actividad" EntitySet="Actividad" />
+      <End Role="Tarea" EntitySet="Tarea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarea__IdEstudia__151B244E" Association="Self.FK__Tarea__IdEstudia__151B244E">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="Tarea" EntitySet="Tarea" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
