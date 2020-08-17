@@ -1,0 +1,82 @@
+
+{ "semanas":[{
+            "Semana": 1,
+            "Retos": [
+                      {
+                        "idR": 1,
+                        "nombre":"Trabajo",
+                        "fecha_vencimiento":"10-10-10",
+                        "objetivos":[
+                                    {"idO": 1,
+                                      "descripcion":"Herramientas"
+                                    },
+                                    {"id0": 2,
+                                      "descripcion": "Etica"
+                                    }],
+                                    
+                        "tec_colones":34,
+                        
+                        "actividades":[
+                                      {
+                                        "descripcionA":"Hacer guía",
+                                        "tareas":[
+                                                 {
+                                                   "descripcionT":"Investigar",
+                                                   "hora":"13:00",
+                                                   "dia":"30-10-20"
+                                                 },
+                                                 {
+                                                   "descripcionT":"Elaborar",
+                                                   "hora":"14:00",
+                                                   "dia": "31-10-20"
+                                                 }
+                                          ]
+                                      }
+                          ]
+                          
+                      }
+              ]
+          },
+          {
+            "Semana": 2,
+            "Retos": [
+                      {
+                        "idR": 1,
+                        "nombre":"Trabajo",
+                        "fecha_vencimiento":"10-10-10",
+                        "objetivos":[
+                                    {"idO": 1,
+                                      "descripcion":"Herramientas"
+                                    },
+                                    {"id0": 2,
+                                      "descripcion": "Etica"
+                                    }],
+                                    
+                        "tec_colones":34,
+                        
+                        "actividades":[
+                                      {
+                                        "descripcionA":"Hacer guía",
+                                        "tareas":[
+                                                 {
+                                                   "descripcionT":"Investigar",
+                                                   "hora":"13:00",
+                                                   "dia":"30-10-20"
+                                                 },
+                                                 {
+                                                   "descripcionT":"Elaborar",
+                                                   "hora":"14:00",
+                                                   "dia": "31-10-20"
+                                                 }
+                                          ]
+                                      }
+                          ]
+                          
+                      }
+              ]
+          }
+          
+            
+        ]
+  
+}
