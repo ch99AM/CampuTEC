@@ -22,6 +22,8 @@ import org.apache.http.entity.StringEntity;
 
 public class Connection{
 	
+	private static FileWriter file1;
+	
 	public void toJSON() {
 		
 	}
@@ -32,7 +34,7 @@ public class Connection{
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			
 			// Archivo JSON
-			String ruta = "../getResponse.json";
+			String ruta = "../LoginCredentials.json";
 			File file = new File(ruta);
 			
             if (!file.exists()) {

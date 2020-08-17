@@ -1,19 +1,16 @@
 ﻿<Properties StartupConfiguration="{A79333B8-2F93-479C-B05B-FAB1573829C4}|">
   <MonoDevelop.Ide.ItemProperties.CampusTECAPI1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CampusTECAPI1/DBConnection/DBQuerys.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CampusTECAPI1/Controllers/LoginController.cs">
     <Files>
-      <File FileName="CampusTECAPI1/DBConnection/DBQuerys.cs" Line="28" Column="21" />
-      <File FileName="CampusTECAPI1/DBConnection/singletonConnection.cs" Line="15" Column="20" />
-      <File FileName="CampusTECAPI1/Controllers/LoginController.cs" Line="13" Column="6" />
+      <File FileName="CampusTECAPI1/Controllers/LoginController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CampusTECAPI1" expanded="True">
             <Node name="CampusTECAPI1" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="DBConnection" expanded="True">
-                <Node name="DBQuerys.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="LoginController.cs" selected="True" />
               </Node>
             </Node>
           </Node>
