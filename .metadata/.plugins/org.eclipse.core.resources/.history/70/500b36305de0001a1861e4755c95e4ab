@@ -1,0 +1,21 @@
+package id.Campus;
+
+import java.net.URLEncoder;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Connection c = new Connection();
+        
+        String temp = URLEncoder.encode("");
+        
+        c.get("/Login?usuario={2017146794}&pin={1234}\\");
+        
+       // c.post("/usuario", "{\"usuario\"\": \"Andrey\"}");
+    }
+}

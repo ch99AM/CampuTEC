@@ -1,0 +1,17 @@
+package id.Campus;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Connection c = new Connection();
+        
+        c.get("/usuario");
+        
+        c.post("/usuario", "{\"usuario\"\": \"Andrey\"}");
+    }
+}

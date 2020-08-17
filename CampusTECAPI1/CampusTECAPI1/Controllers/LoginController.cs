@@ -21,7 +21,7 @@ namespace CampusTECAPI1.Controllers
         [ResponseType(typeof(DataTable))]
         public IHttpActionResult GetLogin(String usuario, String pin)
         {
-            DataTable datatable = DBQuerys.exeQuery(usuario, pin);
+            DataTable datatable = DBQuerys.LoginCredentials(usuario, pin);
             return Ok(datatable);
         }
     }
