@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBCampusTECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="IdActividad" />
+    </Key>
+    <Property Name="IdActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArchivoAdjunto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK__Actividad__IdCur__123EB7A3" FromRole="Actividad" ToRole="Curso" />
+    <NavigationProperty Name="EstudiantexActividads" Relationship="Self.FK__Estudiant__IdAct__32AB8735" FromRole="Actividad" ToRole="EstudiantexActividad" />
+    <NavigationProperty Name="RetoxActividads" Relationship="Self.FK__RetoxActi__IdAct__3587F3E0" FromRole="Actividad" ToRole="RetoxActividad" />
+    <NavigationProperty Name="Tareas" Relationship="Self.FK__Tarea__IdActivid__160F4887" FromRole="Actividad" ToRole="Tarea" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProfesor" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TecColones" Type="Int32" />
+    <NavigationProperty Name="Actividads" Relationship="Self.FK__Actividad__IdCur__123EB7A3" FromRole="Curso" ToRole="Actividad" />
+    <NavigationProperty Name="Profesor" Relationship="Self.FK__Curso__IdProfeso__09A971A2" FromRole="Curso" ToRole="Profesor" />
+    <NavigationProperty Name="EstudiantexCursoes" Relationship="Self.FK__Estudiant__IdCur__2EDAF651" FromRole="Curso" ToRole="EstudiantexCurso" />
+    <NavigationProperty Name="Objetivoes" Relationship="Self.FK__Objetivo__IdCurs__0C85DE4D" FromRole="Curso" ToRole="Objetivo" />
+    <NavigationProperty Name="Retoes" Relationship="Self.FK__Reto__IdCurso__1EA48E88" FromRole="Curso" ToRole="Reto" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="IdEstudiante" />
+    </Key>
+    <Property Name="IdEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+    <Property Name="Universidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sede" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Celular" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TecColones" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EstudiantexCursoes" Relationship="Self.FK__Estudiant__IdEst__2DE6D218" FromRole="Estudiante" ToRole="EstudiantexCurso" />
+    <NavigationProperty Name="EstudiantexActividads" Relationship="Self.FK__Estudiant__IdEst__31B762FC" FromRole="Estudiante" ToRole="EstudiantexActividad" />
+    <NavigationProperty Name="Perfil" Relationship="Self.FK__Estudiant__IdPer__0F624AF8" FromRole="Estudiante" ToRole="Perfil" />
+    <NavigationProperty Name="Tareas" Relationship="Self.FK__Tarea__IdEstudia__151B244E" FromRole="Estudiante" ToRole="Tarea" />
+  </EntityType>
+  <EntityType Name="EstudiantexActividad">
+    <Key>
+      <PropertyRef Name="IdExA" />
+    </Key>
+    <Property Name="IdExA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEstudiante" Type="Int32" Nullable="false" />
+    <Property Name="IdActividad" Type="Int32" Nullable="false" />
+    <Property Name="Completada" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actividad" Relationship="Self.FK__Estudiant__IdAct__32AB8735" FromRole="EstudiantexActividad" ToRole="Actividad" />
+    <NavigationProperty Name="Estudiante" Relationship="Self.FK__Estudiant__IdEst__31B762FC" FromRole="EstudiantexActividad" ToRole="Estudiante" />
+  </EntityType>
+  <EntityType Name="EstudiantexCurso">
+    <Key>
+      <PropertyRef Name="IdExC" />
+    </Key>
+    <Property Name="IdExC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEstudiante" Type="Int32" Nullable="false" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK__Estudiant__IdCur__2EDAF651" FromRole="EstudiantexCurso" ToRole="Curso" />
+    <NavigationProperty Name="Estudiante" Relationship="Self.FK__Estudiant__IdEst__2DE6D218" FromRole="EstudiantexCurso" ToRole="Estudiante" />
+  </EntityType>
+  <EntityType Name="Objetivo">
+    <Key>
+      <PropertyRef Name="IdObjetivo" />
+    </Key>
+    <Property Name="IdObjetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK__Objetivo__IdCurs__0C85DE4D" FromRole="Objetivo" ToRole="Curso" />
+    <NavigationProperty Name="RetoxObjetivoes" Relationship="Self.FK__RetoxObje__IdObj__2B0A656D" FromRole="Objetivo" ToRole="RetoxObjetivo" />
+  </EntityType>
+  <EntityType Name="Perfil">
+    <Key>
+      <PropertyRef Name="IdPerfil" />
+    </Key>
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Pin" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Rol" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Activo" Type="Int32" />
+    <NavigationProperty Name="Estudiantes" Relationship="Self.FK__Estudiant__IdPer__0F624AF8" FromRole="Perfil" ToRole="Estudiante" />
+    <NavigationProperty Name="Profesors" Relationship="Self.FK__Profesor__IdPerf__06CD04F7" FromRole="Perfil" ToRole="Profesor" />
+  </EntityType>
+  <EntityType Name="Profesor">
+    <Key>
+      <PropertyRef Name="IdProfesor" />
+    </Key>
+    <Property Name="IdProfesor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+    <Property Name="Email1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Celular" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cursoes" Relationship="Self.FK__Curso__IdProfeso__09A971A2" FromRole="Profesor" ToRole="Curso" />
+    <NavigationProperty Name="Perfil" Relationship="Self.FK__Profesor__IdPerf__06CD04F7" FromRole="Profesor" ToRole="Perfil" />
+  </EntityType>
+  <EntityType Name="Reto">
+    <Key>
+      <PropertyRef Name="IdReto" />
+    </Key>
+    <Property Name="IdReto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="NombreReto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaLimte" Type="DateTime" Precision="3" />
+    <Property Name="TecColones" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="Self.FK__Reto__IdCurso__1EA48E88" FromRole="Reto" ToRole="Curso" />
+    <NavigationProperty Name="RetoxActividads" Relationship="Self.FK__RetoxActi__IdRet__367C1819" FromRole="Reto" ToRole="RetoxActividad" />
+    <NavigationProperty Name="RetoxObjetivoes" Relationship="Self.FK__RetoxObje__IdRet__2A164134" FromRole="Reto" ToRole="RetoxObjetivo" />
+  </EntityType>
+  <EntityType Name="RetoxActividad">
+    <Key>
+      <PropertyRef Name="IdRxA" />
+    </Key>
+    <Property Name="IdRxA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdReto" Type="Int32" Nullable="false" />
+    <Property Name="IdActividad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actividad" Relationship="Self.FK__RetoxActi__IdAct__3587F3E0" FromRole="RetoxActividad" ToRole="Actividad" />
+    <NavigationProperty Name="Reto" Relationship="Self.FK__RetoxActi__IdRet__367C1819" FromRole="RetoxActividad" ToRole="Reto" />
+  </EntityType>
+  <EntityType Name="RetoxObjetivo">
+    <Key>
+      <PropertyRef Name="IdRxO" />
+    </Key>
+    <Property Name="IdRxO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdReto" Type="Int32" Nullable="false" />
+    <Property Name="IdObjetivo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Objetivo" Relationship="Self.FK__RetoxObje__IdObj__2B0A656D" FromRole="RetoxObjetivo" ToRole="Objetivo" />
+    <NavigationProperty Name="Reto" Relationship="Self.FK__RetoxObje__IdRet__2A164134" FromRole="RetoxObjetivo" ToRole="Reto" />
+  </EntityType>
+  <EntityType Name="Tarea">
+    <Key>
+      <PropertyRef Name="IdTarea" />
+    </Key>
+    <Property Name="IdTarea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEstudiante" Type="Int32" Nullable="false" />
+    <Property Name="IdActividad" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Semana" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="HoraInicio" Type="Time" Precision="7" />
+    <Property Name="HoraFinal" Type="Time" Precision="7" />
+    <NavigationProperty Name="Actividad" Relationship="Self.FK__Tarea__IdActivid__160F4887" FromRole="Tarea" ToRole="Actividad" />
+    <NavigationProperty Name="Estudiante" Relationship="Self.FK__Tarea__IdEstudia__151B244E" FromRole="Tarea" ToRole="Estudiante" />
+  </EntityType>
+  <Association Name="FK__Actividad__IdCur__123EB7A3">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdAct__32AB8735">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="EstudiantexActividad" Type="Self.EstudiantexActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="EstudiantexActividad">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxActi__IdAct__3587F3E0">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="RetoxActividad" Type="Self.RetoxActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="RetoxActividad">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarea__IdActivid__160F4887">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="IdActividad" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Curso__IdProfeso__09A971A2">
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+    <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesor">
+        <PropertyRef Name="IdProfesor" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="IdProfesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdCur__2EDAF651">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="EstudiantexCurso" Type="Self.EstudiantexCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="EstudiantexCurso">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Objetivo__IdCurs__0C85DE4D">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Objetivo">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reto__IdCurso__1EA48E88">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Reto" Type="Self.Reto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Reto">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdEst__2DE6D218">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="EstudiantexCurso" Type="Self.EstudiantexCurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="EstudiantexCurso">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdEst__31B762FC">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="EstudiantexActividad" Type="Self.EstudiantexActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="EstudiantexActividad">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__IdPer__0F624AF8">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Estudiante">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarea__IdEstudia__151B244E">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxObje__IdObj__2B0A656D">
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="1" />
+    <End Role="RetoxObjetivo" Type="Self.RetoxObjetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Objetivo">
+        <PropertyRef Name="IdObjetivo" />
+      </Principal>
+      <Dependent Role="RetoxObjetivo">
+        <PropertyRef Name="IdObjetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Profesor__IdPerf__06CD04F7">
+    <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="IdPerfil" />
+      </Principal>
+      <Dependent Role="Profesor">
+        <PropertyRef Name="IdPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxActi__IdRet__367C1819">
+    <End Role="Reto" Type="Self.Reto" Multiplicity="1" />
+    <End Role="RetoxActividad" Type="Self.RetoxActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reto">
+        <PropertyRef Name="IdReto" />
+      </Principal>
+      <Dependent Role="RetoxActividad">
+        <PropertyRef Name="IdReto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RetoxObje__IdRet__2A164134">
+    <End Role="Reto" Type="Self.Reto" Multiplicity="1" />
+    <End Role="RetoxObjetivo" Type="Self.RetoxObjetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reto">
+        <PropertyRef Name="IdReto" />
+      </Principal>
+      <Dependent Role="RetoxObjetivo">
+        <PropertyRef Name="IdReto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBCampusTECEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actividads" EntityType="Self.Actividad" />
+    <EntitySet Name="Cursoes" EntityType="Self.Curso" />
+    <EntitySet Name="Estudiantes" EntityType="Self.Estudiante" />
+    <EntitySet Name="EstudiantexActividads" EntityType="Self.EstudiantexActividad" />
+    <EntitySet Name="EstudiantexCursoes" EntityType="Self.EstudiantexCurso" />
+    <EntitySet Name="Objetivoes" EntityType="Self.Objetivo" />
+    <EntitySet Name="Perfils" EntityType="Self.Perfil" />
+    <EntitySet Name="Profesors" EntityType="Self.Profesor" />
+    <EntitySet Name="Retoes" EntityType="Self.Reto" />
+    <EntitySet Name="RetoxActividads" EntityType="Self.RetoxActividad" />
+    <EntitySet Name="RetoxObjetivoes" EntityType="Self.RetoxObjetivo" />
+    <EntitySet Name="Tareas" EntityType="Self.Tarea" />
+    <AssociationSet Name="FK__Actividad__IdCur__123EB7A3" Association="Self.FK__Actividad__IdCur__123EB7A3">
+      <End Role="Curso" EntitySet="Cursoes" />
+      <End Role="Actividad" EntitySet="Actividads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdAct__32AB8735" Association="Self.FK__Estudiant__IdAct__32AB8735">
+      <End Role="Actividad" EntitySet="Actividads" />
+      <End Role="EstudiantexActividad" EntitySet="EstudiantexActividads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxActi__IdAct__3587F3E0" Association="Self.FK__RetoxActi__IdAct__3587F3E0">
+      <End Role="Actividad" EntitySet="Actividads" />
+      <End Role="RetoxActividad" EntitySet="RetoxActividads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarea__IdActivid__160F4887" Association="Self.FK__Tarea__IdActivid__160F4887">
+      <End Role="Actividad" EntitySet="Actividads" />
+      <End Role="Tarea" EntitySet="Tareas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Curso__IdProfeso__09A971A2" Association="Self.FK__Curso__IdProfeso__09A971A2">
+      <End Role="Profesor" EntitySet="Profesors" />
+      <End Role="Curso" EntitySet="Cursoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdCur__2EDAF651" Association="Self.FK__Estudiant__IdCur__2EDAF651">
+      <End Role="Curso" EntitySet="Cursoes" />
+      <End Role="EstudiantexCurso" EntitySet="EstudiantexCursoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Objetivo__IdCurs__0C85DE4D" Association="Self.FK__Objetivo__IdCurs__0C85DE4D">
+      <End Role="Curso" EntitySet="Cursoes" />
+      <End Role="Objetivo" EntitySet="Objetivoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reto__IdCurso__1EA48E88" Association="Self.FK__Reto__IdCurso__1EA48E88">
+      <End Role="Curso" EntitySet="Cursoes" />
+      <End Role="Reto" EntitySet="Retoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdEst__2DE6D218" Association="Self.FK__Estudiant__IdEst__2DE6D218">
+      <End Role="Estudiante" EntitySet="Estudiantes" />
+      <End Role="EstudiantexCurso" EntitySet="EstudiantexCursoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdEst__31B762FC" Association="Self.FK__Estudiant__IdEst__31B762FC">
+      <End Role="Estudiante" EntitySet="Estudiantes" />
+      <End Role="EstudiantexActividad" EntitySet="EstudiantexActividads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__IdPer__0F624AF8" Association="Self.FK__Estudiant__IdPer__0F624AF8">
+      <End Role="Perfil" EntitySet="Perfils" />
+      <End Role="Estudiante" EntitySet="Estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarea__IdEstudia__151B244E" Association="Self.FK__Tarea__IdEstudia__151B244E">
+      <End Role="Estudiante" EntitySet="Estudiantes" />
+      <End Role="Tarea" EntitySet="Tareas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxObje__IdObj__2B0A656D" Association="Self.FK__RetoxObje__IdObj__2B0A656D">
+      <End Role="Objetivo" EntitySet="Objetivoes" />
+      <End Role="RetoxObjetivo" EntitySet="RetoxObjetivoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Profesor__IdPerf__06CD04F7" Association="Self.FK__Profesor__IdPerf__06CD04F7">
+      <End Role="Perfil" EntitySet="Perfils" />
+      <End Role="Profesor" EntitySet="Profesors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxActi__IdRet__367C1819" Association="Self.FK__RetoxActi__IdRet__367C1819">
+      <End Role="Reto" EntitySet="Retoes" />
+      <End Role="RetoxActividad" EntitySet="RetoxActividads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RetoxObje__IdRet__2A164134" Association="Self.FK__RetoxObje__IdRet__2A164134">
+      <End Role="Reto" EntitySet="Retoes" />
+      <End Role="RetoxObjetivo" EntitySet="RetoxObjetivoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
