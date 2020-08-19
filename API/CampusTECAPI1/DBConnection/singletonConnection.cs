@@ -20,4 +20,4 @@ namespace CampusTECAPI1.DBConnection
             return conn;
         }
     }
-}
+} 

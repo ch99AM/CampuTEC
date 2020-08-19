@@ -15,7 +15,7 @@ namespace CampusTECAPI1.DBConnection
             MySqlConnection connection = singletonConnection.getConnection();
 
             //Variable que guarda la tabla resultante del sp
-            DataTable datatable = new DataTable();
+            DataTable datatable = new DataTable { TableName = "MyTableName" };
             using (connection)
             {
                 StringBuilder sb = new StringBuilder("SELECT P.Nombre, P.Apellido, P.Usuario, E.Sede, E.Celular, E.Email1, E.Foto " +
